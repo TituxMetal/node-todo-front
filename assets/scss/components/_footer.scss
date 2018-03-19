@@ -1,0 +1,10 @@
+footer {
+  @extend  .page-footer;
+  background-color: $primary-color;
+  text-align: center;
+  height: 64px;
+
+  & a {
+    // color: $primaryTextColor;
+  }
+}

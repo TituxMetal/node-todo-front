@@ -1,0 +1,44 @@
+.todos {
+  min-width: 60%;
+
+  .todo-add {
+    display: flex;
+    width: 100%;
+
+    .todo-add__field {
+      @extend .input-field;
+      border: 1px solid $input-focus-color;
+      margin: 0;
+      padding-left: .5rem;
+      height: auto;
+      width: 60%;
+
+      &:focus:not([readonly]) {
+        border-bottom: 1px solid $input-focus-color;
+        box-shadow: 0 0 0 0 transparent;
+      }
+    }
+
+    .todo-add__button {
+      @extend .btn;
+      @extend .btn-large;
+      @extend .waves-effect;
+      @extend .waves-light;
+      background-color: $secondary-color;
+      box-shadow: 0 0 0 0 transparent;
+      border-radius: 0;
+      width: 40%;
+    }
+  }
+
+  .todo-items {
+    @extend .collection;
+    border-color: $secondary-color;
+
+    .todo-items__item {
+      @extend .collection-item;
+      background-color: transparent;
+      border-color: $secondary-color;
+    }
+  }
+}

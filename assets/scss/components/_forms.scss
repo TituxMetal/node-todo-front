@@ -1,0 +1,20 @@
+.form {
+  @extend .row;
+  margin: auto;
+  width: auto;
+
+  .form__field {
+    @extend .input-field;
+
+  }
+
+  .form__button {
+    @extend .btn;
+    @extend .btn-large;
+    @extend .waves-effect;
+    @extend .waves-light;
+    display: block;
+    margin: auto;
+    width: 100%;
+  }
+}

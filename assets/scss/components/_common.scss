@@ -1,0 +1,30 @@
+* {box-sizing: border-box;}
+
+body {
+  background-color: $backgroundColor;
+  color: $primaryTextColor;
+}
+
+.content {
+  min-height: calc(100vh - (64px + 64px));
+  display: flex;
+  flex-direction: column;
+
+  .box {
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding-bottom: 2rem;
+    width: auto;
+
+    h1 {
+      @extend .center-align;
+      color: $secondary-color-light;
+    }
+  }
+
+  h1 {
+    margin-top: 0;
+    padding-top: 2.1rem;
+  }
+}

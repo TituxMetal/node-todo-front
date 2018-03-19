@@ -1,0 +1,12 @@
+.navigation {
+  background-color: $primary-color;
+
+  .title {
+    font-size: 2.1rem;
+    display: inline-block;
+  }
+
+  .navigation__items {
+    @extend .right;
+  }
+}
