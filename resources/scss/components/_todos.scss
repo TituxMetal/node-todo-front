@@ -39,6 +39,10 @@
       @extend .collection-item;
       background-color: transparent;
       border-color: $secondary-color;
+
+      .completed {
+        text-decoration: line-through;
+      }
     }
   }
 }
