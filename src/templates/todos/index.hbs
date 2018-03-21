@@ -1,4 +1,4 @@
-<?php require 'partials/head.php'; ?>
+{{> header}}
 
 <section class="content container">
   <section class="box todos">
@@ -11,8 +11,8 @@
       <li class="todo-items__item">
         <div class="todo-item">
           <label>
-            <input type="checkbox" />
-            <span>Todo One</span>
+            <input type="checkbox" data-completed="true" checked />
+            <span class="completed">Todo One</span>
           </label>
           <a href="#!" class="secondary-content">
             <i class="material-icons">delete</i>
@@ -25,7 +25,7 @@
       <li class="todo-items__item">
         <div class="todo-item">
           <label>
-            <input type="checkbox" />
+            <input type="checkbox" data-completed="false" />
             <span>Todo Two</span>
           </label>
           <a href="#!" class="secondary-content">
@@ -39,8 +39,8 @@
       <li class="todo-items__item">
         <div class="todo-item">
           <label>
-            <input type="checkbox" />
-            <span>Todo Three</span>
+            <input type="checkbox" data-completed="true" checked />
+            <span class="completed">Todo Three</span>
           </label>
           <a href="#!" class="secondary-content">
             <i class="material-icons">delete</i>
@@ -53,7 +53,7 @@
       <li class="todo-items__item">
         <div class="todo-item">
           <label>
-            <input type="checkbox" />
+            <input type="checkbox" data-completed="false" />
             <span>Todo Four</span>
           </label>
           <a href="#!" class="secondary-content">
@@ -68,4 +68,4 @@
   </section>
 </section>
 
-<?php require 'partials/footer.php'; ?>
+{{> footer}}
