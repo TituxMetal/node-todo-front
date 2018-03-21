@@ -1,9 +1,10 @@
 const config =  {
-  bsProxyUri: false,
+  bsProxyUri: '0.0.0.0:3000',
   bsOpenTheBrowser: false,
-  bsPort: 3000,
+  bsPort: 5000,
   bsFilesToWatch: [
-    'public/*.html'
+    'resources/**/*.*',
+    'src/**/*.*'
   ]
 }
 

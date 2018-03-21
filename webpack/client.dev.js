@@ -5,16 +5,14 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
-const dev = process.env.NODE_ENV === 'dev'
 const config = require('./config.js')
 
-// webpack.config.js
 const webpackConfig = {
   resolve: {
     alias: {
-      "@scss": path.resolve('./assets/scss/'),
-      "@js": path.resolve('./assets/js/'),
-      "@img": path.resolve('./assets/img/')
+      "@scss": path.resolve('./resources/scss/'),
+      "@js": path.resolve('./resources/js/'),
+      "@img": path.resolve('./resources/img/')
     }
   },
   entry: {
@@ -22,10 +20,10 @@ const webpackConfig = {
   },
   output: {
     filename: 'js/[name].js',
-    path: path.resolve('./public/dist/'),
-    publicPath: "./public/"
+    path: path.resolve('./public/'),
+    publicPath: "./public"
   },
-  devtool: dev ? "sourcemap" : "cheap-module-eval-source-map",
+  devtool: "sourcemap",
   performance: {
     hints: false
   },
@@ -47,7 +45,7 @@ const webpackConfig = {
               options: {
                 sourceMap: true,
                 config: {
-                  path: path.resolve('./build/postcss.config.js')
+                  path: path.resolve('./webpack/postcss.config.js')
                 }
               }
             },
@@ -61,27 +59,6 @@ const webpackConfig = {
           fallback: 'style-loader'
         })
       },
-      // {
-      //   test: /\.(svg|png|jpe?g|gif)$/,
-      //   use: [
-      //     {
-      //       loader: 'url-loader',
-      //       options: {
-      //         limit: 8192,
-      //         name: 'img/[name].[ext]',
-      //         publicPath: function(url) {
-      //           return url.replace(/img/, './../img');
-      //         }
-      //       }
-      //     },
-      //     {
-      //       loader: 'image-webpack-loader',
-      //       options: {
-      //         bypassOnDebug: true,
-      //       }
-      //     }
-      //   ]
-      // },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'file-loader'
@@ -97,22 +74,22 @@ const webpackConfig = {
     new ExtractTextPlugin({
       filename: '/css/[name].css'
     }),
-    new CopyWebpackPlugin([{
-      from: 'assets/img',
-      to: 'img'
-    }]),
+    // new CopyWebpackPlugin([{
+    //   from: 'assets/img',
+    //   to: 'img'
+    // }]),
     new BrowserSyncPlugin({
       proxy: config.bsProxyUri,
       open: config.bsOpenTheBrowser,
       port: config.bsPort,
       files: config.bsFilesToWatch,
       ghostMode: {
-        clicks: false,
-        location: false,
-        forms: false,
-        scroll: false
+        clicks: true,
+        location: true,
+        forms: true,
+        scroll: true
       },
-      injectChanges: false,
+      injectChanges: true,
       logFileChanges: false,
       logLevel: 'debug',
       logPrefix: 'webpack',
@@ -120,13 +97,6 @@ const webpackConfig = {
       reloadDelay: 0
     })
   ]
-}
-
-if (!dev) {
-  webpackConfig.plugins.push(
-    new UglifyJsPlugin({ sourceMap: true }),
-    new OptimizeCssAssetsPlugin()
-  )
 }
 
 module.exports = webpackConfig
